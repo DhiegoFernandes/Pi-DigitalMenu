@@ -10,12 +10,12 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class Teste extends javax.swing.JPanel {
+public class Panel_Alterar_Produto extends javax.swing.JPanel {
 
     public Produto produto;
    
 
-    public Teste(Produto produto) throws SQLException {
+    public Panel_Alterar_Produto(Produto produto) throws SQLException {
         initComponents();
         this.produto = produto;
         viewCategoria();

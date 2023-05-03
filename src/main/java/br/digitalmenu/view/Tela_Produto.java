@@ -689,7 +689,7 @@ public class Tela_Produto extends javax.swing.JInternalFrame {
         Produto produto;
         try {
             produto = produtoDao.listarProdutoPorId(Integer.parseInt(txtId.getText()));
-            Teste pteste = new Teste(produto);
+            Panel_Alterar_Produto pteste = new Panel_Alterar_Produto(produto);
             int opcao = JOptionPane.showConfirmDialog(null, pteste, "ALTERAR PRODUTO", JOptionPane.OK_CANCEL_OPTION);
             if (opcao == JOptionPane.OK_OPTION) {
                 Produto p = new Produto();

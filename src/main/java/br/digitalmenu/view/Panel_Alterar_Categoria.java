@@ -6,12 +6,12 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class Panel_Alterar_Mesa extends javax.swing.JPanel {
+public class Panel_Alterar_Categoria extends javax.swing.JPanel {
 
     public Mesa mesa;
    
 
-    public Panel_Alterar_Mesa(Mesa mesa) throws SQLException {
+    public Panel_Alterar_Categoria(Mesa mesa) throws SQLException {
         initComponents();
         this.mesa = mesa;
         setDados();
