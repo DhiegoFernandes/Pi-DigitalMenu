@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class TelaDeEspera extends javax.swing.JFrame {
 
@@ -15,7 +16,8 @@ public class TelaDeEspera extends javax.swing.JFrame {
         initComponents();
         this.numeroMesa = numeroMesa;
         this.lblNumeroMesa.setText(String.valueOf(this.numeroMesa));
-        //this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //this.setExtendedState(JFrame.MAXIMIZED_BOTH);    
+        setResizable(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -81,7 +83,7 @@ public class TelaDeEspera extends javax.swing.JFrame {
                         .addGap(223, 223, 223))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btn_Voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(276, 276, 276))))
+                        .addGap(273, 273, 273))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,9 +92,9 @@ public class TelaDeEspera extends javax.swing.JFrame {
                 .addComponent(lblNumeroMesa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnIniciarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
-                .addComponent(btn_Voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
+                .addComponent(btn_Voltar)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -103,9 +105,7 @@ public class TelaDeEspera extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(747, 600));
@@ -122,14 +122,25 @@ public class TelaDeEspera extends javax.swing.JFrame {
             telaMenu.setVisible(true);
             this.dispose();
         } catch (SQLException ex) {
-            Logger.getLogger(TelaDeEspera.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Erro: " + ex.getMessage());
         }
     }//GEN-LAST:event_btnIniciarPedidoActionPerformed
 
     private void btn_VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VoltarActionPerformed
-
-        this.dispose();
-
+       
+      String senha = (JOptionPane.showInputDialog(null, "Digite a senha: ", "Digite a senha para sair:", JOptionPane.INFORMATION_MESSAGE));
+        if ("admin".equalsIgnoreCase(senha)) {
+            this.dispose();
+          try {
+              new Tela_Login().setVisible(true);
+          } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, "Erro: " + ex.getMessage());
+          }
+        }else{
+            JOptionPane.showMessageDialog(null, "Senha inválida!", "Dados inválidos!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        
     }//GEN-LAST:event_btn_VoltarActionPerformed
 
     public static void main(String args[]) {
