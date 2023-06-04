@@ -521,11 +521,11 @@ public class Tela_Mesa extends Heuristica {
     }//GEN-LAST:event_btn_excluir_mesaActionPerformed
 
     private void btn_alterar_mesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alterar_mesaActionPerformed
-   if (jtMesa.getSelectedRow() != -1) {
+        if (jtMesa.getSelectedRow() != -1) {
             atualizaMesa();
         } else {
             JOptionPane.showMessageDialog(null, "Selecione uma mesa! ", "Mesa não selecionada!", JOptionPane.WARNING_MESSAGE);
-        }       
+        }
     }//GEN-LAST:event_btn_alterar_mesaActionPerformed
 
     private void txt_numero_mesaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_numero_mesaKeyPressed
