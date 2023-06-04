@@ -20,8 +20,7 @@ public class TelaUsuarios extends Heuristica {
         tblListaUsuarios.getTableHeader().setDefaultRenderer(new CorDoCabecalho());//Muda cor do header na classe heuristica
         IniciaTabela(tblListaUsuarios);//Formata a tabela e centraliza pela classe heuristicas
         ListaTabela();
-        
-        
+
     }
 
     public void atualizaUsuario() {
@@ -32,16 +31,20 @@ public class TelaUsuarios extends Heuristica {
                 Panel_Alterar_Usuario panel = new Panel_Alterar_Usuario(user);
                 int resultado = JOptionPane.showConfirmDialog(null, panel, "ALTERAR USUÁRIO", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
                 if (resultado == JOptionPane.OK_OPTION) {
-                    user.setIdusuario(Integer.parseInt(panel.getTxt_id_novo().getText()));
-                    user.setUsuario(panel.getTxt_usuario_novo().getText());
-                    user.setSenha(panel.getTxt_senha_nova().getText());
-                    user.setTipoacesso(panel.getComboBox_tipoAcesso_novo().getSelectedItem().toString());
-                    user.setStatus(panel.getComboBox_status_novo().getSelectedItem().toString());
-                    userDAO.atualizaUsuario(user);
-                    JOptionPane.showMessageDialog(this,
-                            "Usuário atualizado com sucesso!");
-                    listarJTableTodosAtivos();
-
+                    if (jaExiste(panel.getTxt_usuario_novo().getText()) == false) {
+                        user.setIdusuario(Integer.parseInt(panel.getTxt_id_novo().getText()));
+                        user.setUsuario(panel.getTxt_usuario_novo().getText());
+                        user.setSenha(panel.getTxt_senha_nova().getText());
+                        user.setTipoacesso(panel.getComboBox_tipoAcesso_novo().getSelectedItem().toString());
+                        user.setStatus(panel.getComboBox_status_novo().getSelectedItem().toString());
+                        userDAO.atualizaUsuario(user);
+                        JOptionPane.showMessageDialog(this,
+                                "Usuário atualizado com sucesso!");
+                        listarJTableTodosAtivos();
+                    } else if (jaExiste(panel.getTxt_usuario_novo().getText()) == true) {
+                        JOptionPane.showMessageDialog(null, "Usuário já existente!");
+                        atualizaUsuario();
+                    }
                 } else {
                     JOptionPane.showMessageDialog(null, "Operação cancelada!");
                 }
@@ -145,6 +148,18 @@ public class TelaUsuarios extends Heuristica {
                 user.getStatus()
             });
         }
+    }
+
+    public boolean jaExiste(String usuario) throws SQLException {
+        boolean jaExiste = false;
+        UsuarioDAO userDAO = new UsuarioDAO();
+        for (Usuario user : userDAO.listaTodosOsUsuarios()) {
+            if (user.getUsuario().equalsIgnoreCase(usuario)) {
+                jaExiste = true;
+            }
+        }
+        return jaExiste;
+
     }
 
     public void Limpar() {
@@ -489,31 +504,37 @@ public class TelaUsuarios extends Heuristica {
             String senha;
             boolean campo1 = this.verificarSeCampoEstaEmBranco(txt_usuario, "Usuário");
             boolean campo2 = verificarSeCampoEstaEmBranco(txt_senha, "Senha");
-            if (campo1 && campo1) {
-                if (rdoGrupo1.getSelection() == null) { //se os tipos de acessos estiverem vazios
-                    JOptionPane.showMessageDialog(null, "Escolha o tipo de acesso!");
-                    txt_senha.requestFocus();
-                } else {
-                    if (rdoBTN_admin.isSelected()) {
-                        tipoAcesso = "administrador";
+            if (jaExiste(txt_usuario.getText()) == false) {
+                if (campo1 && campo1) {
+                    if (rdoGrupo1.getSelection() == null) { //se os tipos de acessos estiverem vazios
+                        JOptionPane.showMessageDialog(null, "Escolha o tipo de acesso!");
+                        txt_senha.requestFocus();
+                    } else {
+                        if (rdoBTN_admin.isSelected()) {
+                            tipoAcesso = "administrador";
+                        }
+                        if (rdoBTN_atendente.isSelected()) {
+                            tipoAcesso = "atendente";
+                        }
+                        usuario = txt_usuario.getText();
+                        usuario = usuario.toLowerCase();//faz o usuario ficar em letras minusculas
+                        senha = txt_senha.getText();
+                        user.setUsuario(usuario);
+                        user.setSenha(senha);
+                        user.setTipoacesso(tipoAcesso);
+                        String status = "ativado";//##### COMO PADRÃO, O USUARIO SERÁ CRIADO ATIVADO  ######
+                        user.setStatus(status);
+                        UsuarioDAO userDAO = new UsuarioDAO();
+                        userDAO.insereUsuario(user);
+                        JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!");
+                        Limpar();
+                        ListaTabela();
                     }
-                    if (rdoBTN_atendente.isSelected()) {
-                        tipoAcesso = "atendente";
-                    }
-                    usuario = txt_usuario.getText();
-                    usuario = usuario.toLowerCase();//faz o usuario ficar em letras minusculas
-                    senha = txt_senha.getText();
-                    user.setUsuario(usuario);
-                    user.setSenha(senha);
-                    user.setTipoacesso(tipoAcesso);
-                    String status = "ativado";//##### COMO PADRÃO, O USUARIO SERÁ CRIADO ATIVADO  ######
-                    user.setStatus(status);
-                    UsuarioDAO userDAO = new UsuarioDAO();
-                    userDAO.insereUsuario(user);
-                    JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!");
-                    Limpar();
-                    ListaTabela();
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuário já cadastrado!");
+                txt_usuario.setText("");
+                txt_senha.setText("");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Dados inválidos!");
