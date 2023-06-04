@@ -29,6 +29,8 @@ public class TelaDeEspera extends javax.swing.JFrame {
         btnIniciarPedido = new javax.swing.JButton();
         lblNumeroMesa = new javax.swing.JLabel();
         btn_Voltar = new javax.swing.JButton();
+        btnIniciarPedido1 = new javax.swing.JButton();
+        btnIniciarPedido2 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -69,6 +71,21 @@ public class TelaDeEspera extends javax.swing.JFrame {
             }
         });
 
+        btnIniciarPedido1.setBackground(new java.awt.Color(176, 50, 39));
+        btnIniciarPedido1.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        btnIniciarPedido1.setForeground(new java.awt.Color(246, 242, 217));
+        btnIniciarPedido1.setText("Iniciar Pedido");
+
+        btnIniciarPedido2.setBackground(new java.awt.Color(176, 50, 39));
+        btnIniciarPedido2.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        btnIniciarPedido2.setForeground(new java.awt.Color(246, 242, 217));
+        btnIniciarPedido2.setText("Cardápio");
+        btnIniciarPedido2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarPedido2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -79,11 +96,17 @@ public class TelaDeEspera extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnIniciarPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblNumeroMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblNumeroMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnIniciarPedido2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(223, 223, 223))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btn_Voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(273, 273, 273))))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(btnIniciarPedido1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,9 +115,16 @@ public class TelaDeEspera extends javax.swing.JFrame {
                 .addComponent(lblNumeroMesa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnIniciarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnIniciarPedido2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(btn_Voltar)
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(btnIniciarPedido1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -143,6 +173,17 @@ public class TelaDeEspera extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_VoltarActionPerformed
 
+    private void btnIniciarPedido2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarPedido2ActionPerformed
+        // TODO add your handling code here:
+        Tela_VerCardapio telaCardapio = null;
+        try {
+            telaCardapio = new Tela_VerCardapio();
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaDeEspera.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        telaCardapio.setVisible(true);
+    }//GEN-LAST:event_btnIniciarPedido2ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -177,6 +218,8 @@ public class TelaDeEspera extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciarPedido;
+    private javax.swing.JButton btnIniciarPedido1;
+    private javax.swing.JButton btnIniciarPedido2;
     private javax.swing.JButton btn_Voltar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
