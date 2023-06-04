@@ -155,7 +155,7 @@ public class Tela_ResumoPedido extends Heuristica {
 
             },
             new String [] {
-                "ID", "Produto", "Preco", "Qtde", "Subtotal", "Hora Pedido", "Status"
+                "ID", "Produto", "Preço", "Qtde", "Subtotal", "Hora Pedido", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {

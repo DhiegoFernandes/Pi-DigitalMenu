@@ -291,7 +291,7 @@ public class Tela_Admin extends Heuristica {
 
         lbl_ProdutosMaisVendidos.setFont(new java.awt.Font("Cooper Black", 1, 48)); // NOI18N
         lbl_ProdutosMaisVendidos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_ProdutosMaisVendidos.setText("Produtos mais vendidos do mês:");
+        lbl_ProdutosMaisVendidos.setText("Produtos mais vendidos:");
 
         jScrollPane1.setBackground(new java.awt.Color(102, 255, 102));
         jScrollPane1.setForeground(new java.awt.Color(51, 0, 255));

@@ -45,8 +45,6 @@ public class Tela_Atendente extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         mnu_mesa = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        mnu_categoria = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
         mnu_produto = new javax.swing.JMenu();
         mnuitemProduto = new javax.swing.JMenuItem();
         mnu_pedido = new javax.swing.JMenu();
@@ -233,7 +231,8 @@ public class Tela_Atendente extends javax.swing.JFrame {
 
         mnu_mesa.setText("Mesa");
 
-        jMenuItem1.setText("MesaDAO");
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, 0));
+        jMenuItem1.setText("Mesa");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -243,21 +242,9 @@ public class Tela_Atendente extends javax.swing.JFrame {
 
         jMenuBar1.add(mnu_mesa);
 
-        mnu_categoria.setText("Categoria");
-
-        jMenuItem2.setText("Categoria DAO");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        mnu_categoria.add(jMenuItem2);
-
-        jMenuBar1.add(mnu_categoria);
-
         mnu_produto.setText("Produto");
 
-        mnuitemProduto.setText("Produto DAO");
+        mnuitemProduto.setText("Produto");
         mnuitemProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuitemProdutoActionPerformed(evt);
@@ -308,16 +295,6 @@ public class Tela_Atendente extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        try {
-            new Tela_Categoria().setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(Tela_Atendente.class
-                    .getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void mnuitemProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuitemProdutoActionPerformed
         try {
@@ -402,14 +379,12 @@ public class Tela_Atendente extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lbl_foto_atendente;
     private javax.swing.JLabel lbl_menu_atendente;
     private javax.swing.JLabel lbl_tipo_acesso;
     private javax.swing.JLabel lbl_usuario;
     private javax.swing.JMenuItem mnuItemPedido;
-    private javax.swing.JMenu mnu_categoria;
     private javax.swing.JMenu mnu_mesa;
     private javax.swing.JMenu mnu_pedido;
     private javax.swing.JMenu mnu_produto;

@@ -284,15 +284,16 @@ public class Tela_Menu extends javax.swing.JFrame {
                     pedido.setStatus("Encerrado");
                     pedidoDao.atualizaPedido(pedido);
                 }
-                if(foiAdm == true){
+                if (foiAdm == true) {
                     this.dispose();
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(null, "Pedido encerrado, um atendente levará a conta até voce.", "Encerramento de pedido.", JOptionPane.INFORMATION_MESSAGE);
+                    mostraComanda();
                     TelaDeEspera telaEspera = new TelaDeEspera(numeroMesa);
                     telaEspera.setVisible(true);
                     this.dispose();
                 }
-                
+
             } catch (Exception e) {
             }
         }
@@ -380,7 +381,85 @@ public class Tela_Menu extends javax.swing.JFrame {
     }
 
     public void fecharAoEncerrarViaTelaResumo() {
+        mostraComanda();
         this.dispose();
+    }
+
+    public void mostraComanda() {
+        JPanel comanda = new JPanel();
+        TextArea textoComanda = new TextArea();
+        textoComanda.setSize(400, 1800);
+        comanda.add(textoComanda);
+        Comanda test = new Comanda();
+        String texto = ("\t\tComanda\n\n");
+        texto += "----------------------------------------------------------------------------------------------------------\n";
+        texto += "Número do pedido: " + numeroPedido + "\n";
+        texto += "Número da mesa: " + numeroMesa + "\n";
+        texto += "----------------------------------------------------------------------------------------------------------\n";
+        texto += "Nome\t\tPreço\tQtde\tSubtotal\n";
+        texto += "----------------------------------------------------------------------------------------------------------\n";
+
+        RelatorioDao relatorioDao = new RelatorioDao();
+        DecimalFormat df = new DecimalFormat("R$ 0.00");
+        try {
+            total = 0.0;
+            for (ItemRelatorio itemRelatorio : relatorioDao.listarItensPorPedidoAgrupado(numeroPedido)) {
+                //  item = new Item();
+                texto += itemRelatorio.getProduto().getNome();
+                System.out.println("\n\n\n\n\n\n");
+                if (itemRelatorio.getProduto().getNome().length() <= 10) {
+                    texto += "\t\t";
+                    System.out.println("1");
+                } else if ("Classic Burger".equals(itemRelatorio.getProduto().getNome())) {
+                    texto += "\t\t";
+                } else if ("Suco de laranja".equals(itemRelatorio.getProduto().getNome())) {
+                    texto += "\t\t";
+                } else if ("Suco de maracujá".equals(itemRelatorio.getProduto().getNome())) {
+                    texto += "\t";
+                } else if ("Shrimp Parmesan".equals(itemRelatorio.getProduto().getNome())) {
+                    texto += "\t";
+                } else if ("Chicken Tender".equals(itemRelatorio.getProduto().getNome())) {
+                    texto += "\t\t";
+                    System.out.println("TENDDER");
+                } else if ("Mozzarella Sticks".equals(itemRelatorio.getProduto().getNome())) {
+                    texto += "\t";
+                    System.out.println("mozza");
+                } else if ("Mousse de maracujá".equals(itemRelatorio.getProduto().getNome())) {
+                    texto += "\t";
+                } else if ("Bolo com caramelo".equals(itemRelatorio.getProduto().getNome())) {
+                    texto += "\t";
+                } else if ("Bolo de Chocolate".equals(itemRelatorio.getProduto().getNome())) {
+                    texto += "\t";
+                } else if ("Chocolate Meltdown".equals(itemRelatorio.getProduto().getNome())) {
+                    texto += "\t";
+                } else if (itemRelatorio.getProduto().getNome().length() <= 13) {
+                    texto += "\t\t";
+                    System.out.println("2");
+                } else if (itemRelatorio.getProduto().getNome().length() <= 14) {
+                    texto += "\t";
+                    System.out.println("3");
+                } else {
+
+                }
+                texto += df.format(itemRelatorio.getProduto().getPreco())
+                        + "\t"
+                        + itemRelatorio.getQtde()
+                        + "\t"
+                        + df.format(itemRelatorio.getSubtotal());
+                texto += "\n";
+                total += itemRelatorio.getSubtotal();
+            }
+
+            texto += "----------------------------------------------------------------------------------------------------------\n";
+            texto += "Subtotal: " + df.format(total) + "\n";
+            texto += "Taxa de serviço (10%): " + df.format(total * 0.1) + "\n";
+            texto += "TOTAL: " + df.format(total * 1.1) + "\n";
+            texto += "----------------------------------------------------------------------------------------------------------\n";
+            test.getComanda().setText(texto);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage());
+        }
+        int opcao = JOptionPane.showConfirmDialog(null, test, "PRE-CONTA", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
     }
 
     @SuppressWarnings("unchecked")
@@ -1885,82 +1964,81 @@ public class Tela_Menu extends javax.swing.JFrame {
 
 
     private void btn_pre_contaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pre_contaActionPerformed
-        JPanel comanda = new JPanel();
-        TextArea textoComanda = new TextArea();
-        textoComanda.setSize(400, 1800);
-        comanda.add(textoComanda);
-        Comanda test = new Comanda();
-
-        String texto = ("\t\tPré-Conta\n\n");
-        texto += "----------------------------------------------------------------------------------------------------------\n";
-        texto += "Número do pedido: " + numeroPedido + "\n";
-        texto += "Número da mesa: " + numeroMesa + "\n";
-        texto += "----------------------------------------------------------------------------------------------------------\n";
-        texto += "Nome\t\tPreco\tQtde\tSubtotal\n";
-        texto += "----------------------------------------------------------------------------------------------------------\n";
-
-        RelatorioDao relatorioDao = new RelatorioDao();
-        DecimalFormat df = new DecimalFormat("R$ 0.00");
-        try {
-            total = 0.0;
-            for (ItemRelatorio itemRelatorio : relatorioDao.listarItensPorPedidoAgrupado(numeroPedido)) {
-                //  item = new Item();
-                texto += itemRelatorio.getProduto().getNome();
-                System.out.println("\n\n\n\n\n\n");
-                if (itemRelatorio.getProduto().getNome().length() <= 10) {
-                    texto += "\t\t";
-                    System.out.println("1");
-                } else if ("Classic Burger".equals(itemRelatorio.getProduto().getNome())) {
-                    texto += "\t\t";
-
-                } else if ("Suco de laranja".equals(itemRelatorio.getProduto().getNome())) {
-                    texto += "\t\t";
-                } else if ("Suco de maracujá".equals(itemRelatorio.getProduto().getNome())) {
-                    texto += "\t";
-                } else if ("Shrimp Parmesan".equals(itemRelatorio.getProduto().getNome())) {
-                    texto += "\t";
-                } else if ("Chicken Tender".equals(itemRelatorio.getProduto().getNome())) {
-                    texto += "\t\t";
-                    System.out.println("TENDDER");
-                } else if ("Mozzarella Sticks".equals(itemRelatorio.getProduto().getNome())) {
-                    texto += "\t";
-                    System.out.println("mozza");
-                } else if ("Mousse de maracujá".equals(itemRelatorio.getProduto().getNome())) {
-                    texto += "\t";
-                } else if ("Bolo com caramelo".equals(itemRelatorio.getProduto().getNome())) {
-                    texto += "\t";
-                } else if ("Bolo de Chocolate".equals(itemRelatorio.getProduto().getNome())) {
-                    texto += "\t";
-                } else if ("Chocolate Meltdown".equals(itemRelatorio.getProduto().getNome())) {
-                    texto += "\t";
-                } else if (itemRelatorio.getProduto().getNome().length() <= 13) {
-                    texto += "\t\t";
-                    System.out.println("2");
-                } else if (itemRelatorio.getProduto().getNome().length() <= 14) {
-                    texto += "\t";
-                    System.out.println("3");
-                } else {
-
-                }
-                texto += df.format(itemRelatorio.getProduto().getPreco())
-                        + "\t"
-                        + itemRelatorio.getQtde()
-                        + "\t"
-                        + df.format(itemRelatorio.getSubtotal());
-                texto += "\n";
-                total += itemRelatorio.getSubtotal();
-            }
-
-            texto += "----------------------------------------------------------------------------------------------------------\n";
-            texto += "Subtotal: " + df.format(total) + "\n";
-            texto += "Taxa de serviço (10%): " + df.format(total * 0.1) + "\n";
-            texto += "TOTAL: " + df.format(total * 1.1) + "\n";
-            texto += "----------------------------------------------------------------------------------------------------------\n";
-            test.getComanda().setText(texto);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage());
-        }
-        int opcao = JOptionPane.showConfirmDialog(null, test, "PRE-CONTA", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+            mostraComanda();
+//        JPanel comanda = new JPanel();
+//        TextArea textoComanda = new TextArea();
+//        textoComanda.setSize(400, 1800);
+//        comanda.add(textoComanda);
+//        Comanda test = new Comanda();
+//        String texto = ("\t\tPré-Conta\n\n");
+//        texto += "----------------------------------------------------------------------------------------------------------\n";
+//        texto += "Número do pedido: " + numeroPedido + "\n";
+//        texto += "Número da mesa: " + numeroMesa + "\n";
+//        texto += "----------------------------------------------------------------------------------------------------------\n";
+//        texto += "Nome\t\tPreco\tQtde\tSubtotal\n";
+//        texto += "----------------------------------------------------------------------------------------------------------\n";
+//
+//        RelatorioDao relatorioDao = new RelatorioDao();
+//        DecimalFormat df = new DecimalFormat("R$ 0.00");
+//        try {
+//            total = 0.0;
+//            for (ItemRelatorio itemRelatorio : relatorioDao.listarItensPorPedidoAgrupado(numeroPedido)) {
+//                //  item = new Item();
+//                texto += itemRelatorio.getProduto().getNome();
+//                System.out.println("\n\n\n\n\n\n");
+//                if (itemRelatorio.getProduto().getNome().length() <= 10) {
+//                    texto += "\t\t";
+//                    System.out.println("1");
+//                } else if ("Classic Burger".equals(itemRelatorio.getProduto().getNome())) {
+//                    texto += "\t\t";
+//                } else if ("Suco de laranja".equals(itemRelatorio.getProduto().getNome())) {
+//                    texto += "\t\t";
+//                } else if ("Suco de maracujá".equals(itemRelatorio.getProduto().getNome())) {
+//                    texto += "\t";
+//                } else if ("Shrimp Parmesan".equals(itemRelatorio.getProduto().getNome())) {
+//                    texto += "\t";
+//                } else if ("Chicken Tender".equals(itemRelatorio.getProduto().getNome())) {
+//                    texto += "\t\t";
+//                    System.out.println("TENDDER");
+//                } else if ("Mozzarella Sticks".equals(itemRelatorio.getProduto().getNome())) {
+//                    texto += "\t";
+//                    System.out.println("mozza");
+//                } else if ("Mousse de maracujá".equals(itemRelatorio.getProduto().getNome())) {
+//                    texto += "\t";
+//                } else if ("Bolo com caramelo".equals(itemRelatorio.getProduto().getNome())) {
+//                    texto += "\t";
+//                } else if ("Bolo de Chocolate".equals(itemRelatorio.getProduto().getNome())) {
+//                    texto += "\t";
+//                } else if ("Chocolate Meltdown".equals(itemRelatorio.getProduto().getNome())) {
+//                    texto += "\t";
+//                } else if (itemRelatorio.getProduto().getNome().length() <= 13) {
+//                    texto += "\t\t";
+//                    System.out.println("2");
+//                } else if (itemRelatorio.getProduto().getNome().length() <= 14) {
+//                    texto += "\t";
+//                    System.out.println("3");
+//                } else {
+//
+//                }
+//                texto += df.format(itemRelatorio.getProduto().getPreco())
+//                        + "\t"
+//                        + itemRelatorio.getQtde()
+//                        + "\t"
+//                        + df.format(itemRelatorio.getSubtotal());
+//                texto += "\n";
+//                total += itemRelatorio.getSubtotal();
+//            }
+//
+//            texto += "----------------------------------------------------------------------------------------------------------\n";
+//            texto += "Subtotal: " + df.format(total) + "\n";
+//            texto += "Taxa de serviço (10%): " + df.format(total * 0.1) + "\n";
+//            texto += "TOTAL: " + df.format(total * 1.1) + "\n";
+//            texto += "----------------------------------------------------------------------------------------------------------\n";
+//            test.getComanda().setText(texto);
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage());
+//        }
+//        int opcao = JOptionPane.showConfirmDialog(null, test, "PRE-CONTA", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
     }//GEN-LAST:event_btn_pre_contaActionPerformed
 

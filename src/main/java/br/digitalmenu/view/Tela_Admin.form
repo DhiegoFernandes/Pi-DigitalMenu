@@ -497,7 +497,7 @@
                   <Font name="Cooper Black" size="48" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Produtos mais vendidos do m&#xea;s:"/>
+                <Property name="text" type="java.lang.String" value="Produtos mais vendidos:"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
