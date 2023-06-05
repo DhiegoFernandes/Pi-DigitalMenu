@@ -62,7 +62,7 @@
                       <Group type="102" attributes="0">
                           <Component id="pnl_superior" max="32767" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="pnl_opcoes" pref="686" max="32767" attributes="0"/>
+                          <Component id="pnl_opcoes" pref="685" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>

@@ -57,7 +57,7 @@ public class PedidoDao {
         String sql
                 = "SELECT idpedido, id_mesa, total, DATE_FORMAT(data,'%d/%m/%Y') AS data, "
                 + "DATE_FORMAT(data,'%H:%i:%s') AS horario, status "
-                + "FROM pedido";
+                + "FROM pedido order by data desc";
 
         try {
             ps = connection.prepareStatement(sql);

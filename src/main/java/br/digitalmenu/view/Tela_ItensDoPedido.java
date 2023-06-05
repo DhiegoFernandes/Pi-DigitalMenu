@@ -35,7 +35,7 @@ public class Tela_ItensDoPedido extends Heuristica {
         jtItensDoPedido.getTableHeader().setDefaultRenderer(new CorDoCabecalho());//Muda cor do header na classe heuristica
         IniciaTabela(jtItensDoPedido);//Formata a tabela e centraliza pela classe heuristicas
         listarJTable(numeroPedido);
-        lbl_valor_total.setText(String.valueOf(atualizaSubtotalConfirmado()));
+        lbl_valor_total.setText(String.format("%.2f", atualizaSubtotalConfirmado()));
         this.telaAnterior = telaAnterior;
     }
 
