@@ -168,7 +168,7 @@ public class Tela_ItensDoPedido extends Heuristica {
 
             },
             new String [] {
-                "ID item", "Pedido", "Produto", "Preço", "Qtde", "Subtotal", "Horário", "Status"
+                "ID", "Pedido", "Produto", "Preço", "Qtde", "Subtotal", "Horário", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -182,16 +182,18 @@ public class Tela_ItensDoPedido extends Heuristica {
         jtItensDoPedido.setRowHeight(25);
         jScrollPane1.setViewportView(jtItensDoPedido);
         if (jtItensDoPedido.getColumnModel().getColumnCount() > 0) {
-            jtItensDoPedido.getColumnModel().getColumn(1).setMinWidth(5);
-            jtItensDoPedido.getColumnModel().getColumn(1).setPreferredWidth(5);
+            jtItensDoPedido.getColumnModel().getColumn(0).setMinWidth(5);
+            jtItensDoPedido.getColumnModel().getColumn(0).setPreferredWidth(5);
+            jtItensDoPedido.getColumnModel().getColumn(1).setMinWidth(8);
+            jtItensDoPedido.getColumnModel().getColumn(1).setPreferredWidth(8);
             jtItensDoPedido.getColumnModel().getColumn(2).setMinWidth(200);
             jtItensDoPedido.getColumnModel().getColumn(2).setPreferredWidth(200);
             jtItensDoPedido.getColumnModel().getColumn(3).setMinWidth(20);
             jtItensDoPedido.getColumnModel().getColumn(3).setPreferredWidth(20);
             jtItensDoPedido.getColumnModel().getColumn(4).setMinWidth(10);
             jtItensDoPedido.getColumnModel().getColumn(4).setPreferredWidth(10);
-            jtItensDoPedido.getColumnModel().getColumn(5).setMinWidth(20);
-            jtItensDoPedido.getColumnModel().getColumn(5).setPreferredWidth(20);
+            jtItensDoPedido.getColumnModel().getColumn(5).setMinWidth(23);
+            jtItensDoPedido.getColumnModel().getColumn(5).setPreferredWidth(23);
         }
 
         btn_voltar.setBackground(new java.awt.Color(255, 243, 198));
@@ -234,11 +236,11 @@ public class Tela_ItensDoPedido extends Heuristica {
                     .addComponent(pnl_superior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlGlobalLayout.createSequentialGroup()
-                        .addComponent(btn_voltar1, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                        .addComponent(btn_voltar1, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
                         .addGap(36, 36, 36)
-                        .addComponent(btn_voltar2, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                        .addComponent(btn_voltar2, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
                         .addGap(27, 27, 27)
-                        .addComponent(btn_voltar, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)))
+                        .addComponent(btn_voltar, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlGlobalLayout.setVerticalGroup(

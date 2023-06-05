@@ -239,7 +239,7 @@ public class Tela_ResumoPedido extends Heuristica {
         pnl_resumo_pedido.setLayout(pnl_resumo_pedidoLayout);
         pnl_resumo_pedidoLayout.setHorizontalGroup(
             pnl_resumo_pedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 830, Short.MAX_VALUE)
+            .addGap(0, 934, Short.MAX_VALUE)
             .addGroup(pnl_resumo_pedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_resumo_pedidoLayout.createSequentialGroup()
                     .addContainerGap()

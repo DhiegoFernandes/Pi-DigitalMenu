@@ -50,11 +50,11 @@
                       <Component id="pnl_superior" max="32767" attributes="0"/>
                       <Component id="jScrollPane1" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="btn_voltar1" pref="259" max="32767" attributes="0"/>
+                          <Component id="btn_voltar1" pref="346" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="btn_voltar2" pref="259" max="32767" attributes="0"/>
+                          <Component id="btn_voltar2" pref="346" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="btn_voltar" pref="259" max="32767" attributes="0"/>
+                          <Component id="btn_voltar" pref="347" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -200,7 +200,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="8" rowCount="0">
-                    <Column editable="false" title="ID item" type="java.lang.Object"/>
+                    <Column editable="false" title="ID" type="java.lang.Object"/>
                     <Column editable="false" title="Pedido" type="java.lang.Object"/>
                     <Column editable="false" title="Produto" type="java.lang.Object"/>
                     <Column editable="false" title="Pre&#xe7;o" type="java.lang.Object"/>
@@ -212,12 +212,12 @@
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="-1" minWidth="5" prefWidth="5" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="5" prefWidth="5" resizable="true">
+                    <Column maxWidth="-1" minWidth="8" prefWidth="8" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
@@ -237,7 +237,7 @@
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="20" prefWidth="20" resizable="true">
+                    <Column maxWidth="-1" minWidth="23" prefWidth="23" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
