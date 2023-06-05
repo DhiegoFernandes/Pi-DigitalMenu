@@ -25,9 +25,9 @@ public class ConnectionFactory {
     public HikariDataSource createDataSource() {
         HikariConfig config = new HikariConfig();
 
-        config.setJdbcUrl("jdbc:mysql://localhost:3306/xxxxxxxxxxxxxxxxxxxxxx");
+        config.setJdbcUrl("jdbc:mysql://localhost:3306/digitalmenu");
         config.setUsername("root");
-        config.setPassword("xxxxxxxxxxxxxxxxxxxx");
+        config.setPassword("123456");
 
         config.setMaximumPoolSize(20);
         return new HikariDataSource(config);
