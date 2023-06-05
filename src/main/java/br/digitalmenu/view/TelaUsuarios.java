@@ -31,7 +31,19 @@ public class TelaUsuarios extends Heuristica {
                 Panel_Alterar_Usuario panel = new Panel_Alterar_Usuario(user);
                 int resultado = JOptionPane.showConfirmDialog(null, panel, "ALTERAR USUÁRIO", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
                 if (resultado == JOptionPane.OK_OPTION) {
-                    if (jaExiste(panel.getTxt_usuario_novo().getText()) == false) {
+                    if (panel.getLbl_id_atual().getText().equalsIgnoreCase(panel.getTxt_id_novo().getText()) && panel.getLbl_usuario_atual().getText().equalsIgnoreCase(panel.getTxt_usuario_novo().getText())) {
+
+                        user.setIdusuario(Integer.parseInt(panel.getTxt_id_novo().getText()));
+                        user.setUsuario(panel.getTxt_usuario_novo().getText());
+                        user.setSenha(panel.getTxt_senha_nova().getText());
+                        user.setTipoacesso(panel.getComboBox_tipoAcesso_novo().getSelectedItem().toString());
+                        user.setStatus(panel.getComboBox_status_novo().getSelectedItem().toString());
+                        userDAO.atualizaUsuario(user);
+                        JOptionPane.showMessageDialog(this,
+                                "Usuário atualizado com sucesso!");
+                        listarJTableTodosAtivos();
+
+                    } else if (!(panel.getLbl_id().getText().equalsIgnoreCase(panel.getTxt_id_novo().getText())) && jaExiste(panel.getTxt_usuario_novo().getText()) == false) {
                         user.setIdusuario(Integer.parseInt(panel.getTxt_id_novo().getText()));
                         user.setUsuario(panel.getTxt_usuario_novo().getText());
                         user.setSenha(panel.getTxt_senha_nova().getText());
@@ -399,19 +411,19 @@ public class TelaUsuarios extends Heuristica {
         pnl_opcoesLayout.setHorizontalGroup(
             pnl_opcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_opcoesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(206, 206, 206)
                 .addGroup(pnl_opcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_desativar, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_desativar, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE))
                 .addGap(191, 191, 191))
         );
         pnl_opcoesLayout.setVerticalGroup(
             pnl_opcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_opcoesLayout.createSequentialGroup()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_desativar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(btn_desativar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(6, 6, 6))
         );
 
         javax.swing.GroupLayout pnl_global_telaUsuariosLayout = new javax.swing.GroupLayout(pnl_global_telaUsuarios);

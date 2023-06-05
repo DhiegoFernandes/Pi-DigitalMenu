@@ -5,6 +5,7 @@ import br.digitalmenu.model.Usuario;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 
@@ -53,6 +54,55 @@ public class Panel_Alterar_Usuario extends javax.swing.JPanel {
     public JComboBox<String> getComboBox_tipoAcesso_novo() {
         return comboBox_tipoAcesso_novo;
     }
+
+    public JLabel getLbl_senha() {
+        return lbl_senha;
+    }
+
+    public void setLbl_senha(JLabel lbl_senha) {
+        this.lbl_senha = lbl_senha;
+    }
+
+    public JLabel getLbl_senha_atual() {
+        return lbl_senha_atual;
+    }
+
+    public void setLbl_senha_atual(JLabel lbl_senha_atual) {
+        this.lbl_senha_atual = lbl_senha_atual;
+    }
+
+    public JLabel getLbl_usuario() {
+        return lbl_usuario;
+    }
+
+    public void setLbl_usuario(JLabel lbl_usuario) {
+        this.lbl_usuario = lbl_usuario;
+    }
+
+    public JLabel getLbl_usuario_atual() {
+        return lbl_usuario_atual;
+    }
+
+    public void setLbl_usuario_atual(JLabel lbl_usuario_atual) {
+        this.lbl_usuario_atual = lbl_usuario_atual;
+    }
+
+    public JLabel getLbl_id() {
+        return lbl_id;
+    }
+
+    public void setLbl_id(JLabel lbl_id) {
+        this.lbl_id = lbl_id;
+    }
+
+    public JLabel getLbl_id_atual() {
+        return lbl_id_atual;
+    }
+
+    public void setLbl_id_atual(JLabel lbl_id_atual) {
+        this.lbl_id_atual = lbl_id_atual;
+    }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
