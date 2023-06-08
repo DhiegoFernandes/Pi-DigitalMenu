@@ -82,11 +82,11 @@ public class Tela_ResumoPedido extends Heuristica {
         lbl_Total = new javax.swing.JLabel();
         lbl_valor_total = new javax.swing.JLabel();
         pnl_tabela = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jtResumo = new javax.swing.JTable();
         pnl_inferior = new javax.swing.JPanel();
         btn_voltar = new javax.swing.JButton();
         btn_encerrar_pedido = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtResumo = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Carrinho");
@@ -149,46 +149,15 @@ public class Tela_ResumoPedido extends Heuristica {
                 .addGap(23, 23, 23))
         );
 
-        jtResumo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jtResumo.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Produto", "Preço", "Qtde", "Subtotal", "Hora Pedido", "Status"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jtResumo.setRowHeight(25);
-        jScrollPane1.setViewportView(jtResumo);
-        if (jtResumo.getColumnModel().getColumnCount() > 0) {
-            jtResumo.getColumnModel().getColumn(0).setMinWidth(5);
-            jtResumo.getColumnModel().getColumn(0).setPreferredWidth(5);
-            jtResumo.getColumnModel().getColumn(1).setMinWidth(200);
-            jtResumo.getColumnModel().getColumn(1).setPreferredWidth(200);
-            jtResumo.getColumnModel().getColumn(6).setMinWidth(100);
-            jtResumo.getColumnModel().getColumn(6).setPreferredWidth(100);
-        }
-
         javax.swing.GroupLayout pnl_tabelaLayout = new javax.swing.GroupLayout(pnl_tabela);
         pnl_tabela.setLayout(pnl_tabelaLayout);
         pnl_tabelaLayout.setHorizontalGroup(
             pnl_tabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE)
+            .addGap(0, 922, Short.MAX_VALUE)
         );
         pnl_tabelaLayout.setVerticalGroup(
             pnl_tabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_tabelaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 278, Short.MAX_VALUE)
         );
 
         pnl_inferior.setBackground(new java.awt.Color(246, 242, 233));
@@ -235,11 +204,39 @@ public class Tela_ResumoPedido extends Heuristica {
                 .addContainerGap())
         );
 
+        jtResumo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jtResumo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Produto", "Preço", "Qtde", "Subtotal", "Horário", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jtResumo.setRowHeight(25);
+        jScrollPane1.setViewportView(jtResumo);
+        if (jtResumo.getColumnModel().getColumnCount() > 0) {
+            jtResumo.getColumnModel().getColumn(0).setMinWidth(5);
+            jtResumo.getColumnModel().getColumn(0).setPreferredWidth(5);
+            jtResumo.getColumnModel().getColumn(1).setMinWidth(200);
+            jtResumo.getColumnModel().getColumn(1).setPreferredWidth(200);
+            jtResumo.getColumnModel().getColumn(6).setMinWidth(100);
+            jtResumo.getColumnModel().getColumn(6).setPreferredWidth(100);
+        }
+
         javax.swing.GroupLayout pnl_resumo_pedidoLayout = new javax.swing.GroupLayout(pnl_resumo_pedido);
         pnl_resumo_pedido.setLayout(pnl_resumo_pedidoLayout);
         pnl_resumo_pedidoLayout.setHorizontalGroup(
             pnl_resumo_pedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 934, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE)
             .addGroup(pnl_resumo_pedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_resumo_pedidoLayout.createSequentialGroup()
                     .addContainerGap()
@@ -251,7 +248,10 @@ public class Tela_ResumoPedido extends Heuristica {
         );
         pnl_resumo_pedidoLayout.setVerticalGroup(
             pnl_resumo_pedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 496, Short.MAX_VALUE)
+            .addGroup(pnl_resumo_pedidoLayout.createSequentialGroup()
+                .addGap(125, 125, 125)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                .addGap(105, 105, 105))
             .addGroup(pnl_resumo_pedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnl_resumo_pedidoLayout.createSequentialGroup()
                     .addContainerGap()

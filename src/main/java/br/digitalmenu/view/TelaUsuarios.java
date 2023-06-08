@@ -517,7 +517,7 @@ public class TelaUsuarios extends Heuristica {
             boolean campo1 = this.verificarSeCampoEstaEmBranco(txt_usuario, "Usuário");
             boolean campo2 = verificarSeCampoEstaEmBranco(txt_senha, "Senha");
             if (jaExiste(txt_usuario.getText()) == false) {
-                if (campo1 && campo1) {
+                if (campo1 && campo2) {
                     if (rdoGrupo1.getSelection() == null) { //se os tipos de acessos estiverem vazios
                         JOptionPane.showMessageDialog(null, "Escolha o tipo de acesso!");
                         txt_senha.requestFocus();
